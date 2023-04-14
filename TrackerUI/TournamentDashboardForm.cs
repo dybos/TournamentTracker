@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace TrackerUI
 {
-    public partial class loadExistingTorunamentLabel : Form
+    public partial class TournamentDashboardForm : Form
     {
-        public loadExistingTorunamentLabel()
+        public TournamentDashboardForm()
         {
             InitializeComponent();
         }

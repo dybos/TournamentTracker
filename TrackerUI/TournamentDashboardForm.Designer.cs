@@ -1,7 +1,7 @@
 ﻿
 namespace TrackerUI
 {
-    partial class loadExistingTorunamentLabel
+    partial class TournamentDashboardForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace TrackerUI
         {
             this.headerLabel = new System.Windows.Forms.Label();
             this.loadExistingTorunamentDropDown = new System.Windows.Forms.ComboBox();
-            this.selectTeamMemberLabel = new System.Windows.Forms.Label();
+            this.loadExistingTournamentLabel = new System.Windows.Forms.Label();
             this.loadTournamentButton = new System.Windows.Forms.Button();
             this.createTournamentButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -55,16 +55,16 @@ namespace TrackerUI
             this.loadExistingTorunamentDropDown.Size = new System.Drawing.Size(394, 38);
             this.loadExistingTorunamentDropDown.TabIndex = 31;
             // 
-            // selectTeamMemberLabel
+            // loadExistingTournamentLabel
             // 
-            this.selectTeamMemberLabel.AutoSize = true;
-            this.selectTeamMemberLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.selectTeamMemberLabel.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.selectTeamMemberLabel.Location = new System.Drawing.Point(248, 165);
-            this.selectTeamMemberLabel.Name = "selectTeamMemberLabel";
-            this.selectTeamMemberLabel.Size = new System.Drawing.Size(322, 37);
-            this.selectTeamMemberLabel.TabIndex = 30;
-            this.selectTeamMemberLabel.Text = "Load Existing Torunament";
+            this.loadExistingTournamentLabel.AutoSize = true;
+            this.loadExistingTournamentLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.loadExistingTournamentLabel.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.loadExistingTournamentLabel.Location = new System.Drawing.Point(248, 165);
+            this.loadExistingTournamentLabel.Name = "loadExistingTournamentLabel";
+            this.loadExistingTournamentLabel.Size = new System.Drawing.Size(322, 37);
+            this.loadExistingTournamentLabel.TabIndex = 30;
+            this.loadExistingTournamentLabel.Text = "Load Existing Tournament";
             // 
             // loadTournamentButton
             // 
@@ -96,7 +96,7 @@ namespace TrackerUI
             this.createTournamentButton.Text = "Create Tournament";
             this.createTournamentButton.UseVisualStyleBackColor = true;
             // 
-            // loadExistingTorunamentLabel
+            // TournamentDashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -105,11 +105,11 @@ namespace TrackerUI
             this.Controls.Add(this.createTournamentButton);
             this.Controls.Add(this.loadTournamentButton);
             this.Controls.Add(this.loadExistingTorunamentDropDown);
-            this.Controls.Add(this.selectTeamMemberLabel);
+            this.Controls.Add(this.loadExistingTournamentLabel);
             this.Controls.Add(this.headerLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.Name = "loadExistingTorunamentLabel";
+            this.Name = "TournamentDashboardForm";
             this.Text = "Tournament Dashboard";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -120,7 +120,7 @@ namespace TrackerUI
 
         private System.Windows.Forms.Label headerLabel;
         private System.Windows.Forms.ComboBox loadExistingTorunamentDropDown;
-        private System.Windows.Forms.Label selectTeamMemberLabel;
+        private System.Windows.Forms.Label loadExistingTournamentLabel;
         private System.Windows.Forms.Button loadTournamentButton;
         private System.Windows.Forms.Button createTournamentButton;
     }

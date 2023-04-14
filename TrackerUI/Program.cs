@@ -17,7 +17,7 @@ namespace TrackerUI
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TournamentVieverForm());
+            Application.Run(new TournamentDashboardForm());
         }
     }
 }

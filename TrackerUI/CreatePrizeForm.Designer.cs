@@ -54,7 +54,6 @@ namespace TrackerUI
             this.createPrizeButton.Name = "createPrizeButton";
             this.createPrizeButton.Size = new System.Drawing.Size(331, 73);
             this.createPrizeButton.TabIndex = 26;
-            this.createPrizeButton.Text = "Create Prize";
             this.createPrizeButton.UseVisualStyleBackColor = true;
             // 
             // headerLabel
