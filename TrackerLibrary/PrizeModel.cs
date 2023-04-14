@@ -8,7 +8,13 @@ namespace TrackerLibrary
     /// Represents the prizing model for tournament.
     /// </summary>
     public class PrizeModel
-    {   
+    {
+        /// <summary>
+        /// The uniqe identifier for the prize in database.
+        /// </summary>
+
+        public int Id { get; set; }
+
         /// <summary>
         /// Represenst which place in the tournament is connect with particular prize
         /// </summary>
