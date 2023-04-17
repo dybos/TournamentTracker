@@ -54,7 +54,9 @@ namespace TrackerUI
             this.createPrizeButton.Name = "createPrizeButton";
             this.createPrizeButton.Size = new System.Drawing.Size(331, 73);
             this.createPrizeButton.TabIndex = 26;
+            this.createPrizeButton.Text = "Create Prize";
             this.createPrizeButton.UseVisualStyleBackColor = true;
+            this.createPrizeButton.Click += new System.EventHandler(this.createPrizeButton_Click);
             // 
             // headerLabel
             // 
@@ -73,7 +75,6 @@ namespace TrackerUI
             this.placeNumberValue.Name = "placeNumberValue";
             this.placeNumberValue.Size = new System.Drawing.Size(189, 23);
             this.placeNumberValue.TabIndex = 29;
-            this.placeNumberValue.TextChanged += new System.EventHandler(this.firstNameValue_TextChanged);
             // 
             // placeNumberLabel
             // 
