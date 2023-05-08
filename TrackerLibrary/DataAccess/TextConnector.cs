@@ -19,7 +19,13 @@ namespace TrackerLibrary.DataAccess
 
 
             // Find the max id
-            int currentId = prizes.OrderByDescending(x => x.Id).First().Id + 1;
+            int currentId = 1;
+            
+            if(prizes.Count > 0)
+            {
+                currentId = prizes.OrderByDescending(x => x.Id).First().Id + 1;
+            }
+
             model.Id = currentId;
 
 
@@ -28,12 +34,14 @@ namespace TrackerLibrary.DataAccess
 
 
 
-            
+
 
 
             // Conver the prizes to list <string>
             // Save the list<string> to the text file
+            prizes.SaveToPrizeFile(PrizesFile);
 
+            return model;
         }
     }
 }

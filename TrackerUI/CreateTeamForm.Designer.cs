@@ -148,6 +148,7 @@ namespace TrackerUI
             this.createMemberButton.TabIndex = 29;
             this.createMemberButton.Text = "Create Member";
             this.createMemberButton.UseVisualStyleBackColor = true;
+            this.createMemberButton.Click += new System.EventHandler(this.createMemberButton_Click);
             // 
             // cellphoneValue
             // 
@@ -184,7 +185,6 @@ namespace TrackerUI
             this.emailLabel.Size = new System.Drawing.Size(82, 37);
             this.emailLabel.TabIndex = 25;
             this.emailLabel.Text = "Email";
-            this.emailLabel.Click += new System.EventHandler(this.emailLabel_Click);
             // 
             // lastNameValue
             // 
@@ -210,7 +210,6 @@ namespace TrackerUI
             this.firstNameValue.Name = "firstNameValue";
             this.firstNameValue.Size = new System.Drawing.Size(189, 43);
             this.firstNameValue.TabIndex = 22;
-            this.firstNameValue.TextChanged += new System.EventHandler(this.teamOneScoreValue_TextChanged);
             // 
             // firstNameLabel
             // 
@@ -222,7 +221,6 @@ namespace TrackerUI
             this.firstNameLabel.Size = new System.Drawing.Size(144, 37);
             this.firstNameLabel.TabIndex = 21;
             this.firstNameLabel.Text = "First Name";
-            this.firstNameLabel.Click += new System.EventHandler(this.teamOneScoreLabel_Click);
             // 
             // teamMembersListBox
             // 

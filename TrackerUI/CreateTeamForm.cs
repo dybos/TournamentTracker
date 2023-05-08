@@ -15,19 +15,16 @@ namespace TrackerUI
             InitializeComponent();
         }
 
-        private void teamOneScoreLabel_Click(object sender, EventArgs e)
+
+        private void createMemberButton_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void teamOneScoreValue_TextChanged(object sender, EventArgs e)
+        private bool ValidateForm()
         {
-
-        }
-
-        private void emailLabel_Click(object sender, EventArgs e)
-        {
-
+            
+            
         }
     }
 }
