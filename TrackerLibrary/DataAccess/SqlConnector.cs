@@ -18,13 +18,34 @@ namespace TrackerLibrary.DataAccess
 {
     public class SqlConnector : IDataConnection
     {
-    // TODO - Make the CreatePrizeMethos actually save to the database.
+        public PersonModel CreatePerson(PersonModel model)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("Tournaments")))
+            {
+                var p = new DynamicParameters();
+                p.Add("@FirstName", model.FirstName);
+                p.Add("@LastName", model.LastName);
+                p.Add("@EmailAdress", model.EmailAdress);
+                p.Add("@CellphoneNumber", model.CellphoneNumber);
+                p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-    /// <summary>
-    /// Saves a new prize to the database
-    /// </summary>
-    /// <param name="model">The prize information</param>
-    /// <returns>The prize information, including the uniqe identifier.</returns>
+                connection.Execute("dbo.spPeople_Insert", p, commandType: CommandType.StoredProcedure);
+
+                model.Id = p.Get<int>("@id");
+
+                return model;
+
+
+            }
+        }
+
+        // TODO - Make the CreatePrizeMethos actually save to the database.
+
+        /// <summary>
+        /// Saves a new prize to the database
+        /// </summary>
+        /// <param name="model">The prize information</param>
+        /// <returns>The prize information, including the uniqe identifier.</returns>
         public PrizeModel CreatePrize(PrizeModel model)
         {
 
