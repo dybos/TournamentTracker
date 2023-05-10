@@ -14,7 +14,7 @@ namespace TrackerUI
     {
 
 
-        private List<PersonModel> availableTeamMembers = new List<PersonModel>();
+        private List<PersonModel> availableTeamMembers = GlobalConfig.Connection.GetPerson_All();
         private List<PersonModel> selectedTeamMembers = new List<PersonModel>();
 
 
@@ -24,21 +24,21 @@ namespace TrackerUI
 
             // CreateSampleData();
 
-            WireUpList();
+            WireUpLists();
         }
 
         private void CreateSampleData()
         {
-            availableTeamMembers.Add(new PersonModel { FirstName = "Kacper", LastName = "Dybowski", EmailAdress = "kacper.dybowski@gmail.com" });
-            availableTeamMembers.Add(new PersonModel { FirstName = "Wojtek", LastName = "Smith", EmailAdress = "wojtek.dybowski@gmail.com" });
-            availableTeamMembers.Add(new PersonModel { FirstName = "Filip", LastName = "Jonson", EmailAdress = "filip.dybowski@gmail.com" });
+            availableTeamMembers.Add(new PersonModel { FirstName = "Kacper", LastName = "Dybowski", EmailAddress = "kacper.dybowski@gmail.com" });
+            availableTeamMembers.Add(new PersonModel { FirstName = "Wojtek", LastName = "Smith", EmailAddress = "wojtek.dybowski@gmail.com" });
+            availableTeamMembers.Add(new PersonModel { FirstName = "Filip", LastName = "Jonson", EmailAddress = "filip.dybowski@gmail.com" });
             
-            selectedTeamMembers.Add(new PersonModel { FirstName = "Pawel", LastName = "Gaweł", EmailAdress = "kacper.dybowski@gmail.com" });
-            selectedTeamMembers.Add(new PersonModel { FirstName = "Ala", LastName = "Posh", EmailAdress = "wojtek.dybowski@gmail.com" });
-            selectedTeamMembers.Add(new PersonModel { FirstName = "Victoria", LastName = "Gone", EmailAdress = "filip.dybowski@gmail.com" });
+            selectedTeamMembers.Add(new PersonModel { FirstName = "Pawel", LastName = "Gaweł", EmailAddress = "kacper.dybowski@gmail.com" });
+            selectedTeamMembers.Add(new PersonModel { FirstName = "Ala", LastName = "Posh", EmailAddress = "wojtek.dybowski@gmail.com" });
+            selectedTeamMembers.Add(new PersonModel { FirstName = "Victoria", LastName = "Gone", EmailAddress = "filip.dybowski@gmail.com" });
         }
 
-        private void WireUpList()
+        private void WireUpLists()
         {
             selectTeamMemberDropDown.DataSource = availableTeamMembers;
             selectTeamMemberDropDown.DisplayMember = "FullName";
@@ -56,7 +56,7 @@ namespace TrackerUI
                 PersonModel p = new PersonModel();
                 p.FirstName = firstNameValue.Text;
                 p.LastName = lastNameValue.Text;
-                p.EmailAdress = emailValue.Text;
+                p.EmailAddress = emailValue.Text;
                 p.CellphoneNumber = cellphoneValue.Text;
 
                 GlobalConfig.Connection.CreatePerson(p);
@@ -94,6 +94,17 @@ namespace TrackerUI
             }
 
             return true;
+        }
+
+        private void addMemberButton_Click(object sender, EventArgs e)
+        {
+            PersonModel p = (PersonModel)selectTeamMemberDropDown.SelectedItem;
+
+            availableTeamMembers.Remove(p);
+            selectedTeamMembers.Add(p);
+
+            WireUpLists();
+
         }
     }
 }
