@@ -91,7 +91,7 @@ namespace TrackerLibrary.DataAccess
                     p.Add("@PersonId", tm.Id);
 
 
-                    connection.Execute("dbo.spTeams_Insert", p, commandType: CommandType.StoredProcedure);
+                    connection.Execute("dbo.spTeamMembers_Insert", p, commandType: CommandType.StoredProcedure);
                 }
 
                 return model;
