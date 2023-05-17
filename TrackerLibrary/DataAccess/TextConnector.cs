@@ -97,6 +97,19 @@ namespace TrackerLibrary.DataAccess
                 .FullFilePath()
                 .LoadFile()
                 .ConvertToTournamentModels(TeamFile, PeopleFile, PrizesFile);
+
+            int currentId = 1;
+
+            if (tournaments.Count > 0)
+            {
+                currentId = tournaments.OrderByDescending(x => x.Id).First().Id + 1;
+            }
+
+            model.Id = currentId;
+            
+            tournaments.Add(model);
+
+            tournaments.SaveToTournamentFile();
         }
 
         public List<PersonModel> GetPerson_All()
@@ -107,6 +120,8 @@ namespace TrackerLibrary.DataAccess
         public List<TeamModel> GetTeam_All()
         {
             return TeamFile.FullFilePath().LoadFile().ConvertToTeamModels(PeopleFile);
+
+
         }
     }
 }
