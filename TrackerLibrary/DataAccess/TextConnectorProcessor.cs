@@ -175,7 +175,7 @@ namespace TrackerLibrary.DataAccess.TextHelpers
         
         }
 
-        public static void SaveToTournamentFile(this List<TournamentModel> models)
+        public static void SaveToTournamentFile(this List<TournamentModel> models, string fileName)
         {
             List<string> lines = new List<string>();
 
@@ -188,7 +188,9 @@ namespace TrackerLibrary.DataAccess.TextHelpers
                     { ConvertPrizeListToString(tm.Prizes)},
                     {ConvertRoundListToString(tm.Rounds)}"); 
             }
-        
+
+            File.WriteAllLines(fileName.FullFilePath(), lines);
+
         }
 
 
