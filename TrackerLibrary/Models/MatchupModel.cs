@@ -16,6 +16,7 @@ namespace TrackerLibrary.Models
         /// </summary>
 
         public int Id { get; set; }
+
         /// <summary>
         /// The set of team that were involved in this match.
         /// </summary>

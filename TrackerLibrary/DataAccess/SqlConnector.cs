@@ -42,7 +42,6 @@ namespace TrackerLibrary.DataAccess
             }
         }
 
-        // TODO - Make the CreatePrizeMethos actually save to the database.
 
         /// <summary>
         /// Saves a new prize to the database
@@ -137,7 +136,7 @@ namespace TrackerLibrary.DataAccess
                 p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
 
-                connection.Execute("dbo.spTeamMembers_Insert", p, commandType: CommandType.StoredProcedure);
+                connection.Execute("dbo.spTournamentPrizes_Insert", p, commandType: CommandType.StoredProcedure);
             }
         }
 
@@ -185,8 +184,24 @@ namespace TrackerLibrary.DataAccess
                         p = new DynamicParameters();
 
                         p.Add("@MatchupId", matchup.Id);
-                        p.Add("@ParentMatchupId", entry.ParentMatchup);
-                        p.Add("@TeamCompetingId", entry.TeamCompeting.Id);
+                        
+                        if(entry.ParentMatchup == null)
+                        {
+                            p.Add("@ParentMatchupId", null);
+                        }
+                        else
+                        {
+                            p.Add("@ParentMatchupId", entry.ParentMatchup.Id);
+                        }
+                        
+                        if (entry.TeamCompeting == null)
+                        {
+                            p.Add("@TeamCompetingId", null);
+                        }
+                        else
+                        {
+                            p.Add("@TeamCompetingId", entry.TeamCompeting.Id);
+                        }
                         p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
 
