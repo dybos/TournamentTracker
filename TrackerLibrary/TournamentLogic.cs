@@ -66,7 +66,7 @@ namespace TrackerLibrary
             {
                 curr.Entries.Add(new MatchupEntryModel { TeamCompeting = team });
 
-                if (byes > 0) || curr.Entries.Count > 1)
+                if (byes > 0 || curr.Entries.Count > 1)
                 {
                     curr.MatchupRound = 1;
                     output.Add(curr);
