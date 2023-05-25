@@ -12,7 +12,7 @@ namespace TrackerLibrary.DataAccess
         private const string PrizesFile = "PrizeModels.csv";
         private const string PeopleFile = "PersonModels.csv";
         private const string TeamFile = "TeamModels.csv";
-        private const string TournamentFile = "TournamentModels,csv";
+        private const string TournamentFile = "TournamentModels.csv";
         private const string MatchupFile = "MatchupModels.csv";
         private const string MatchupEntryFile = "MatchupEntryModels.csv";
 
