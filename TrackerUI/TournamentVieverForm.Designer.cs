@@ -38,7 +38,7 @@ namespace TrackerUI
             this.teamOneName = new System.Windows.Forms.Label();
             this.teamOneScoreLabel = new System.Windows.Forms.Label();
             this.teamOneScoreValue = new System.Windows.Forms.TextBox();
-            this.TeamTwoScoreValue = new System.Windows.Forms.TextBox();
+            this.teamTwoScoreValue = new System.Windows.Forms.TextBox();
             this.teamTwoScoreLabel = new System.Windows.Forms.Label();
             this.teamTwoName = new System.Windows.Forms.Label();
             this.versusLabel = new System.Windows.Forms.Label();
@@ -85,6 +85,7 @@ namespace TrackerUI
             this.roundDropDown.Name = "roundDropDown";
             this.roundDropDown.Size = new System.Drawing.Size(250, 38);
             this.roundDropDown.TabIndex = 3;
+            this.roundDropDown.SelectedIndexChanged += new System.EventHandler(this.roundDropDown_SelectedIndexChanged);
             // 
             // unplayedOnlyCheckbox
             // 
@@ -98,6 +99,7 @@ namespace TrackerUI
             this.unplayedOnlyCheckbox.TabIndex = 4;
             this.unplayedOnlyCheckbox.Text = "Unplayed Only";
             this.unplayedOnlyCheckbox.UseVisualStyleBackColor = true;
+            this.unplayedOnlyCheckbox.CheckedChanged += new System.EventHandler(this.unplayedOnlyCheckbox_CheckedChanged);
             // 
             // matchupListBox
             // 
@@ -108,6 +110,7 @@ namespace TrackerUI
             this.matchupListBox.Name = "matchupListBox";
             this.matchupListBox.Size = new System.Drawing.Size(325, 332);
             this.matchupListBox.TabIndex = 5;
+            this.matchupListBox.SelectedIndexChanged += new System.EventHandler(this.matchupListBox_SelectedIndexChanged);
             // 
             // teamOneName
             // 
@@ -138,12 +141,12 @@ namespace TrackerUI
             this.teamOneScoreValue.Size = new System.Drawing.Size(100, 35);
             this.teamOneScoreValue.TabIndex = 8;
             // 
-            // TeamTwoScoreValue
+            // teamTwoScoreValue
             // 
-            this.TeamTwoScoreValue.Location = new System.Drawing.Point(510, 516);
-            this.TeamTwoScoreValue.Name = "TeamTwoScoreValue";
-            this.TeamTwoScoreValue.Size = new System.Drawing.Size(100, 35);
-            this.TeamTwoScoreValue.TabIndex = 11;
+            this.teamTwoScoreValue.Location = new System.Drawing.Point(510, 516);
+            this.teamTwoScoreValue.Name = "teamTwoScoreValue";
+            this.teamTwoScoreValue.Size = new System.Drawing.Size(100, 35);
+            this.teamTwoScoreValue.TabIndex = 11;
             // 
             // teamTwoScoreLabel
             // 
@@ -192,6 +195,7 @@ namespace TrackerUI
             this.scoreButton.TabIndex = 13;
             this.scoreButton.Text = "Score";
             this.scoreButton.UseVisualStyleBackColor = true;
+            this.scoreButton.Click += new System.EventHandler(this.scoreButton_Click);
             // 
             // TournamentVieverForm
             // 
@@ -201,7 +205,7 @@ namespace TrackerUI
             this.ClientSize = new System.Drawing.Size(1371, 900);
             this.Controls.Add(this.scoreButton);
             this.Controls.Add(this.versusLabel);
-            this.Controls.Add(this.TeamTwoScoreValue);
+            this.Controls.Add(this.teamTwoScoreValue);
             this.Controls.Add(this.teamTwoScoreLabel);
             this.Controls.Add(this.teamTwoName);
             this.Controls.Add(this.teamOneScoreValue);
@@ -233,7 +237,7 @@ namespace TrackerUI
         private System.Windows.Forms.Label teamOneName;
         private System.Windows.Forms.Label teamOneScoreLabel;
         private System.Windows.Forms.TextBox teamOneScoreValue;
-        private System.Windows.Forms.TextBox TeamTwoScoreValue;
+        private System.Windows.Forms.TextBox teamTwoScoreValue;
         private System.Windows.Forms.Label teamTwoScoreLabel;
         private System.Windows.Forms.Label teamTwoName;
         private System.Windows.Forms.Label versusLabel;
