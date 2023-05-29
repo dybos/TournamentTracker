@@ -148,7 +148,37 @@ namespace TrackerUI
 
         private void scoreButton_Click(object sender, EventArgs e)
         {
+            MatchupModel m = (MatchupModel)matchupListBox.SelectedItem;
+            double teamOneScore = 0;
+            double teamTwoScore = 0;
 
+            foreach (MatchupEntryModel  me in m.Entries )
+            {
+
+                bool scoreValid = double.TryParse(teamOneScoreValue.Text, out teamOneScore);
+
+                if (scoreValid)
+                {
+                    m.Entries[0].Score = teamOneScore; 
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a valid score for Team one.");
+                    return;
+                }
+
+                scoreValid = double.TryParse(teamTwoScoreValue.Text, out teamTwoScore);
+
+                if (scoreValid)
+                {
+                    m.Entries[0].Score = teamTwoScore;
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a valid score for Two one.");
+                    return;
+                }
+            }
         }
     }
 }
