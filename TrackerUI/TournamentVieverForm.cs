@@ -206,7 +206,7 @@ namespace TrackerUI
 
                         if (scoreValid)
                         {
-                            m.Entries[0].Score = teamTwoScore;
+                            m.Entries[1].Score = teamTwoScore;
                         }
                         else
                         {
@@ -229,6 +229,21 @@ namespace TrackerUI
             else
             {
                 MessageBox.Show("I do not handle tie games.");
+            }
+
+            foreach (List<MatchupModel> round in tournament.Rounds)
+            {
+                foreach (MatchupModel rm in round)
+                {
+                    foreach (MatchupEntryModel me in rm.Entries)
+                    {
+                        if (me.ParentMatchup.Id==m.Id)
+                        {
+                            me.TeamCompeting = m.Winner;
+                            GlobalConfig.Connection.UpdateMatchup(rm);
+                        }
+                    }
+                }
             }
 
             LoadMatchups((int)roundDropDown.SelectedItem);
