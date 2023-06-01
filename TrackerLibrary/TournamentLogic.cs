@@ -26,7 +26,7 @@ namespace TrackerLibrary
 
             CreateOtherRounds(model, rounds);
 
-            UpdateTournamentResults(model);
+            
 
         }
 
@@ -57,7 +57,7 @@ namespace TrackerLibrary
         private static void AdvanceWinner(List<MatchupModel> models, TournamentModel tournament)
         {
 
-            //TODO My proposition for doing this with LINQ without 4 (sick!) foreach loops:
+            ////TODO My proposition for doing this with LINQ without 4 (sick!) foreach loops:
             //foreach (MatchupModel m in models)
             //{
             //    var matchupEntries = tournament.Rounds
@@ -71,7 +71,7 @@ namespace TrackerLibrary
             //        GlobalConfig.Connection.UpdateMatchup(me.ParentMatchup);
             //    }
             //}
-            //IMPORTANT!!!! Not tested yet!
+            //IMPORTANT!!!! Tested already, working great !!! Which one is better? I need an opinion from the specialist ;>
 
             foreach (MatchupModel m in models)
             {

@@ -154,6 +154,8 @@ namespace TrackerUI
             // create all of team entries
             GlobalConfig.Connection.CreateTournament(tm);
 
+
+
             // TODO After click the button, we want to go to the tournament viever form.
 
             TournamentVieverForm frm = new TournamentVieverForm(tm);
