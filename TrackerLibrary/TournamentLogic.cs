@@ -9,7 +9,7 @@ namespace TrackerLibrary
 {
     public static class TournamentLogic
     {
-        // TODO wire our matchups
+        // wire our matchups
         // Order our list randomly of team
         // check if it is big enough - if not, add in byes
         // figure out n for 2^n teams
@@ -71,7 +71,7 @@ namespace TrackerLibrary
             //        GlobalConfig.Connection.UpdateMatchup(me.ParentMatchup);
             //    }
             //}
-            //IMPORTANT!!!! Tested already, working great !!! Which one is better? I need an opinion from the specialist ;>
+            //IMPORTANT!!!! Tested already, working but doing something strange with database - when I came back to code below, the Tournament data cannot be saved? Why?!!! Which one is better? I need an opinion from the specialist ;>
 
             foreach (MatchupModel m in models)
             {

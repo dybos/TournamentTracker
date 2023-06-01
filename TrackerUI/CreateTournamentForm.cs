@@ -146,7 +146,7 @@ namespace TrackerUI
             tm.Prizes = selectedPrizes;
             tm.EnteredTeams = selectedTeams;
 
-            // TODO wire our matchups
+            //wire our matchups
             TournamentLogic.CreateRounds(tm);
 
             // Create Tournament entry
@@ -156,7 +156,7 @@ namespace TrackerUI
 
 
 
-            // TODO After click the button, we want to go to the tournament viever form.
+            //After click the button, we want to go to the tournament viever form.
 
             TournamentVieverForm frm = new TournamentVieverForm(tm);
             frm.Show();

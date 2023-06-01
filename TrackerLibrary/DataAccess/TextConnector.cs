@@ -32,7 +32,7 @@ namespace TrackerLibrary.DataAccess
 
         }
 
-        // TODO - Wire up the CreatePrize for text files.
+        // Wire up the CreatePrize for text files.
         public void CreatePrize(PrizeModel model)
         {
             //Load the text file and Convert the text to List <PrizeModel>
