@@ -26,6 +26,8 @@ namespace TrackerLibrary
 
             CreateOtherRounds(model, rounds);
 
+            UpdateTournamentResults(model);
+
         }
 
         public static void UpdateTournamentResults(TournamentModel model)
@@ -49,7 +51,6 @@ namespace TrackerLibrary
 
             toScore.ForEach(x => GlobalConfig.Connection.UpdateMatchup(x));
 
-            //GlobalConfig.Connection.UpdateMatchup(m);
 
         }
 

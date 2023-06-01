@@ -156,6 +156,10 @@ namespace TrackerUI
 
             // TODO After click the button, we want to go to the tournament viever form.
 
+            TournamentVieverForm frm = new TournamentVieverForm(tm);
+            frm.Show();
+            this.Close();
+
 
 
         }
