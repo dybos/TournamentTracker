@@ -60,8 +60,7 @@ namespace TrackerLibrary
 
             if(endingRound > startingRound)
             {
-                //alert user
-                //EmailLogic.SendEmail();
+                AlertUsersToNewRound(model);
 
             }
 
@@ -93,8 +92,7 @@ namespace TrackerLibrary
             {
                 return;
             }
-            string fromAddress = "";
-            List<string> to = new List<string>();
+            string to = "";
             string subject = "";
             StringBuilder body = new StringBuilder();
 
@@ -118,13 +116,13 @@ namespace TrackerLibrary
                 body.AppendLine("~Tournament Tracker");
             }
 
-            to.Add(p.EmailAddress);
-
-            fromAddress = GlobalConfig.AppKeyLookup("senderEmail");
+            to = p.EmailAddress;
 
 
 
-            EmailLogic.SendEmail(fromAddress, to, subject, body.ToString());
+
+
+            EmailLogic.SendEmail(to, subject, body.ToString());
         }
 
         private static int CheckCurrentRound(this TournamentModel model)
