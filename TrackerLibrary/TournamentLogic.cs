@@ -28,17 +28,23 @@ namespace TrackerLibrary
 
             
 
+            
+
         }
 
         public static void UpdateTournamentResults(TournamentModel model)
         {
+            int startingRound = model.CheckCurrentRound();
+            
             List<MatchupModel> toScore = new List<MatchupModel>();
 
             foreach (List<MatchupModel> round in model.Rounds)
             {
                 foreach (MatchupModel rm in round)
                 {
-                    if (rm.Winner == null && (rm.Entries.Any(x => x.Score !=0) || rm.Entries.Count == 1))
+                    //TODO Verify the logic, clear and build databasa again, lets see what will hapend.
+                    if (rm.Winner == null && (rm.Entries.Any(x => x.Score != 0) || rm.Entries.Count == 1))
+                    //if (rm.Winner != null || (rm.Entries.Any(x => x.Score != 0) && rm.Entries.Count !=1))
                     {
                         toScore.Add(rm);
                     }
@@ -50,8 +56,86 @@ namespace TrackerLibrary
             AdvanceWinner(toScore, model);
 
             toScore.ForEach(x => GlobalConfig.Connection.UpdateMatchup(x));
+            int endingRound = model.CheckCurrentRound();
 
+            if(endingRound > startingRound)
+            {
+                //alert user
+                //EmailLogic.SendEmail();
 
+            }
+
+        }
+
+        private static void AlertUsersToNewRound(this TournamentModel model)
+        {
+            int currentRoundNumber = model.CheckCurrentRound();
+            List<MatchupModel> currentRound = model.Rounds.Where(x => x.First().MatchupRound == currentRoundNumber).First();
+
+            //TODO use linq instead of foreach loops
+            foreach(MatchupModel matchup in currentRound)
+            {
+                foreach(MatchupEntryModel me in matchup.Entries)
+                {
+                    foreach (PersonModel p in me.TeamCompeting.TeamMembers)
+                    {
+                        AlertPersonToNewRound(p, me.TeamCompeting.TeamName, matchup.Entries.Where(x=>x.TeamCompeting != me.TeamCompeting).FirstOrDefault());
+                    }
+                }
+            }
+        }
+
+        private static void AlertPersonToNewRound(PersonModel p, string teamName, MatchupEntryModel competitor)
+        {
+            //TODO - My idea is to validate the email address during the process of uploading data in form, when user provide the data. We'll try doing that later.
+            // IMPORTANT!!! We have to decide then is the email address is a mandatory field or not, but validation is still neeeded.
+            if(p.EmailAddress.Length==0)
+            {
+                return;
+            }
+            string from = "";
+            List<string> to = new List<string>();
+            string subject = "";
+            StringBuilder body = new StringBuilder();
+
+            if (competitor !=null)
+            {
+                subject = $"You have a new matchup with{ competitor.TeamCompeting.TeamName }";
+
+                body.AppendLine("<h1> You have a new mathchup </h1>");
+                body.Append("<strong> Cometitor: </strong>");
+                body.AppendLine(competitor.TeamCompeting.TeamName);
+                body.AppendLine();
+                body.AppendLine();
+                body.AppendLine("Have a great Time!");
+                body.AppendLine("~Tournament Tracker");
+            }
+            else
+            {
+                subject = $"You have a bye week this round";
+
+                body.AppendLine("Enjoy your round off");
+                body.AppendLine("~Tournament Tracker");
+            }
+
+            to.Add(p.EmailAddress);
+
+            
+            EmailLogic.SendEmail(from, to, subject, body.ToString());
+        }
+
+        private static int CheckCurrentRound(this TournamentModel model)
+        {
+            int output = 1;
+
+            foreach (List<MatchupModel> round in model.Rounds)
+            {
+                if(round.All(x=>x.Winner != null))
+                {
+                    output += 1;
+                }
+            }
+            return output;
         }
 
         private static void AdvanceWinner(List<MatchupModel> models, TournamentModel tournament)
@@ -85,6 +169,7 @@ namespace TrackerLibrary
                             {
                                 if (me.ParentMatchup.Id == m.Id)
                                 {
+                                    
                                     me.TeamCompeting = m.Winner;
                                     GlobalConfig.Connection.UpdateMatchup(rm);
                                 }

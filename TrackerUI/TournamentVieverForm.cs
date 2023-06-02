@@ -176,11 +176,16 @@ namespace TrackerUI
             bool scoreTwoValid = double.TryParse(teamTwoScoreValue.Text, out double teamTwoScore);
 
 
-            if (!scoreOneValid)
+            if (!scoreTwoValid && !scoreOneValid)
+            {
+                output = "The Scores One and Two Values are not a valid numbers.";
+                
+            }
+            else  if (!scoreOneValid) 
             {
                 output = "The Score One Value is not a valid number.";
             }
-            else  if (!scoreTwoValid)
+            else if (!scoreTwoValid)
             {
                 output = "The Score Two Value is not a valid number.";
             }
@@ -261,6 +266,7 @@ namespace TrackerUI
             {
 
                 MessageBox.Show($"The application had the following error: {ex.Message}.");
+                return;
             }
 
             LoadMatchups((int)roundDropDown.SelectedItem);
