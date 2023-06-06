@@ -72,16 +72,17 @@ namespace TrackerLibrary
 
             var matchups = currentRound
                 .SelectMany(matchup => matchup.Entries
-                    .SelectMany(entry => entry.TeamCompeting.TeamMembers
-                        .Select(person => new
-                        { 
-                            Person = person,
-                            TeamName = entry.TeamCompeting.TeamName,
-                            OpponentEntry = matchup.Entries.FirstOrDefault(x => x.TeamCompeting != entry.TeamCompeting)
-                        }
+                    .Where(entry => entry.TeamCompeting != null)
+                        .SelectMany(entry => entry.TeamCompeting.TeamMembers
+                            .Select(person => new
+                            { 
+                                Person = person,
+                                TeamName = entry.TeamCompeting.TeamName,
+                                OpponentEntry = matchup.Entries.FirstOrDefault(x => x.TeamCompeting != entry.TeamCompeting)
+                            }
+                            )
                         )
-                    )
-                );
+                 );
 
             foreach(var matchup in matchups)
             {
@@ -271,11 +272,19 @@ namespace TrackerLibrary
                     {
                         foreach (MatchupEntryModel me in rm.Entries)
                         {
-                            if (me.ParentMatchup != null)
+                            if(rm.Entries.Count == 1)
+                            
+                            {
+        
+                             me.TeamCompeting = m.Winner;
+                             GlobalConfig.Connection.UpdateMatchup(rm);
+                                
+                            }
+                            else if (me.ParentMatchup != null)
                             {
                                 if (me.ParentMatchup.Id == m.Id)
                                 {
-                                    
+
                                     me.TeamCompeting = m.Winner;
                                     GlobalConfig.Connection.UpdateMatchup(rm);
                                 }
