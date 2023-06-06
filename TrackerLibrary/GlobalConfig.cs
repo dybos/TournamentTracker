@@ -40,6 +40,8 @@ namespace TrackerLibrary
 
         public static string CnnString(string name)
         {
+            //TODO Need to handle with this error - dunno why, after changing the App.config - I added the system.net section with mailSetting - app is blowing up right here, when we are trying to connect with database.
+            // When I deleted section system.net in App.config, app started to working - have to repair the issue with system.net - few ideas after checking stackoverflow.
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
 
