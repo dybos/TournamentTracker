@@ -27,9 +27,6 @@ namespace TrackerLibrary
             CreateOtherRounds(model, rounds);
 
             
-
-            
-
         }
 
         public static void UpdateTournamentResults(TournamentModel model)
@@ -72,16 +69,36 @@ namespace TrackerLibrary
             List<MatchupModel> currentRound = model.Rounds.Where(x => x.First().MatchupRound == currentRoundNumber).First();
 
             //TODO use linq instead of foreach loops
-            foreach(MatchupModel matchup in currentRound)
+
+            var matchups = currentRound
+                .SelectMany(matchup => matchup.Entries
+                    .SelectMany(entry => entry.TeamCompeting.TeamMembers
+                        .Select(person => new
+                        { 
+                            Person = person,
+                            TeamName = entry.TeamCompeting.TeamName,
+                            OpponentEntry = matchup.Entries.FirstOrDefault(x => x.TeamCompeting != entry.TeamCompeting)
+                        }
+                        )
+                    )
+                );
+
+            foreach(var matchup in matchups)
             {
-                foreach(MatchupEntryModel me in matchup.Entries)
-                {
-                    foreach (PersonModel p in me.TeamCompeting.TeamMembers)
-                    {
-                        AlertPersonToNewRound(p, me.TeamCompeting.TeamName, matchup.Entries.Where(x=>x.TeamCompeting != me.TeamCompeting).FirstOrDefault());
-                    }
-                }
+                AlertPersonToNewRound(matchup.Person, matchup.TeamName, matchup.OpponentEntry);
             }
+
+        //    foreach(MatchupModel matchup in currentRound)
+        //    {
+        //        foreach(MatchupEntryModel me in matchup.Entries)
+        //        {
+        //            foreach (PersonModel p in me.TeamCompeting.TeamMembers)
+        //            {
+        //                AlertPersonToNewRound(p, me.TeamCompeting.TeamName, matchup.Entries.Where(x=>x.TeamCompeting != me.TeamCompeting).FirstOrDefault());
+        //            }
+        //        }
+        //    }
+        //
         }
 
         private static void AlertPersonToNewRound(PersonModel p, string teamName, MatchupEntryModel competitor)

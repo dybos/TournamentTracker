@@ -28,16 +28,16 @@ namespace TrackerUI
             WireUpLists();
         }
 
-        private void CreateSampleData()
-        {
-            availableTeamMembers.Add(new PersonModel { FirstName = "Kacper", LastName = "Dybowski", EmailAddress = "kacper.dybowski@gmail.com" });
-            availableTeamMembers.Add(new PersonModel { FirstName = "Wojtek", LastName = "Smith", EmailAddress = "wojtek.dybowski@gmail.com" });
-            availableTeamMembers.Add(new PersonModel { FirstName = "Filip", LastName = "Jonson", EmailAddress = "filip.dybowski@gmail.com" });
+        //private void CreateSampleData()
+        //{
+        //    availableTeamMembers.Add(new PersonModel { FirstName = "Kacper", LastName = "Dybowski", EmailAddress = "kacper.dybowski@gmail.com" });
+        //    availableTeamMembers.Add(new PersonModel { FirstName = "Wojtek", LastName = "Smith", EmailAddress = "wojtek.dybowski@gmail.com" });
+        //    availableTeamMembers.Add(new PersonModel { FirstName = "Filip", LastName = "Jonson", EmailAddress = "filip.dybowski@gmail.com" });
             
-            selectedTeamMembers.Add(new PersonModel { FirstName = "Pawel", LastName = "Gaweł", EmailAddress = "kacper.dybowski@gmail.com" });
-            selectedTeamMembers.Add(new PersonModel { FirstName = "Ala", LastName = "Posh", EmailAddress = "wojtek.dybowski@gmail.com" });
-            selectedTeamMembers.Add(new PersonModel { FirstName = "Victoria", LastName = "Gone", EmailAddress = "filip.dybowski@gmail.com" });
-        }
+        //    selectedTeamMembers.Add(new PersonModel { FirstName = "Pawel", LastName = "Gaweł", EmailAddress = "kacper.dybowski@gmail.com" });
+        //    selectedTeamMembers.Add(new PersonModel { FirstName = "Ala", LastName = "Posh", EmailAddress = "wojtek.dybowski@gmail.com" });
+        //    selectedTeamMembers.Add(new PersonModel { FirstName = "Victoria", LastName = "Gone", EmailAddress = "filip.dybowski@gmail.com" });
+        //}
 
         private void WireUpLists()
         {
