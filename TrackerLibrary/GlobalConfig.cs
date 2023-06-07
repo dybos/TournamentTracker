@@ -12,7 +12,7 @@ namespace TrackerLibrary
         public const string PrizesFile = "PrizeModels.csv";
         public const string PeopleFile = "PersonModels.csv";
         public const string TeamFile = "TeamModels.csv";
-        public const string TournamentFile = "TournamentModels,csv";
+        public const string TournamentFile = "TournamentModels.csv";
         public const string MatchupFile = "MatchupModels.csv";
         public const string MatchupEntryFile = "MatchupEntryModels.csv";
 
@@ -32,7 +32,7 @@ namespace TrackerLibrary
 
             else if(db == DatabaseType.TextFile)
             {
-                //Create text connection
+                //Create text connection, not working right now due to StackOverflowException error
                 TextConnector text = new TextConnector();
                 Connection=text;
             }
